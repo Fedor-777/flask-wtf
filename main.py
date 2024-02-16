@@ -17,9 +17,19 @@ def index(title):
     param['title'] = title
     return render_template('index.html', **param)
 
-@app.route('/odd_even/<num>')
-def odd_even(num):
-    return render_template('index_jinja.html', number=int(num))
+@app.route('/traning/<prof>')
+def traning(prof):
+    if "инженер" in prof:
+        param = {}
+        param['text'] = "Инженерные тренажеры"
+        param['filepath'] = '/static/image/ик.jfif'
+
+    if "строитель" in prof:
+        param = {}
+        param['text'] = "Научные симуляторы"
+        param['filepath'] = '/static/image/нс.jfif'
+
+    return render_template('ex2.html', **param)
 
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
